@@ -110,7 +110,7 @@ int buildEncodingTree(int nextFree) {
     //    - Push new parent index back into the heap
     heap.push(parent, weightArr);
     // 4. Return the index of the last remaining node (root)
-    int root = h.pop (weightArr);
+    int root = heap.pop (weightArr);
 
     return root;
 }
