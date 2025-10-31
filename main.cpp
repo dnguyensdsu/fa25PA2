@@ -119,6 +119,7 @@ int buildEncodingTree(int nextFree) {
 void generateCodes(int root, string codes[]) {
     // TODO:
     // Use stack<pair<int, string>> to simulate DFS traversal.
+    stack<pair<int, string>> stack;
     // Left edge adds '0', right edge adds '1'.
     // Record code when a leaf node is reached.
 }
