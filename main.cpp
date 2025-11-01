@@ -98,59 +98,63 @@ int buildEncodingTree(int nextFree) {
         heap.push(i, weightArr);
     }
     // 3. While the heap size is greater than 1:
-    while (heap.size > 1) {}
-    //    - Pop two smallest nodes
-    int small1 = heap.pop(weightArr);
-    int small2 = heap.pop(weightArr);
+    while (heap.size > 1) {
+        //    - Pop two smallest nodes
+        int small1 = heap.pop(weightArr);
+        int small2 = heap.pop(weightArr);
+        //    - Create a new parent node with combined weight
+        int parent = nextFree++; // new parent index
+        //    - Set left/right pointers
+        charArr[parent] = '/0'; // internal node set
+        // children
+        leftArr[parent] = small1;
+        rightArr[parent] = small2;
+        //combined
+        weightArr[parent] = weightArr[small1] + weightArr[small2];
+        //    - Push new parent index back into the heap
+        heap.push(parent, weightArr);
 
-    //    - Create a new parent node with combined weight
-    int parent = nextFree++; // new parent index
-    //    - Set left/right pointers
-    leftArr[parent] = small1;
-    rightArr[parent] = small2;
-    //    - Push new parent index back into the heap
-    heap.push(parent, weightArr);
-    // 4. Return the index of the last remaining node (root)
-    int root = heap.pop (weightArr);
-
-    return root;
+        // 4. Return the index of the last remaining node (root)
+        int root = heap.pop (weightArr);
+        return root;
+    }
 }
 
 // Step 4: Use an STL stack to generate codes
 void generateCodes(int root, string codes[]) {
     // TODO:
     // Use stack<pair<int, string>> to simulate DFS traversal.
-    stack<pair<int, string>> stack;
+    stack<pair<int, string>> st;
+
+    // pushing root to start traversing
+    st.push({root, ""});
 
     // while loop when stack has nodes
-    while (!stack.empty()) {
+    while (!st.empty()) {
         // top node
-        pair<int, string> current = stack.top();
-        stack.pop();
+        pair<int, string> current = st.top();
+        st.pop();
 
         int nodeIndex = current.first;
         string code = current.second;
 
-        // checks if it is a leaf node
+        int rightChild = rightArr[nodeIndex];
+        int leftChild = leftArr[nodeIndex];
+
+        // checks if it is a leaf node, can also change to lchild and rchild, leaf
         if (leftArr[nodeIndex] == -1 &&  rightArr[nodeIndex] == -1) {
             char ch = charArr[nodeIndex];
             if (ch >= 'z' && ch <= 'z') {
                 codes[ch-'a'] = code;
             }
-        }
-        else {
-
-            // push children into stack with codes
-            int rightChild = rightArr[nodeIndex];
-            int leftChild = leftArr[nodeIndex];
-
+        } else {
             // Left edge adds '0', right edge adds '1'.
             // Record code when a leaf node is reached.
             if (rightChild != -1) {
-                stack.push({rightChild,code + "1"});
+                st.push({rightChild,code + "1"});
             }
             if (leftChild != -1) {
-                stack.push({leftChild,code + "0"});
+                st.push({leftChild,code + "0"});
             }
         }
     }
