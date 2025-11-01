@@ -90,6 +90,12 @@ int createLeafNodes(int freq[]) {
 // Step 3: Build the encoding tree using heap operations
 int buildEncodingTree(int nextFree) {
     // add base cases
+    if (nextFree == 0) { // nothing in file
+        return -1;
+    }
+    if (nextFree == 1) { // only root
+        return 0;
+    }
     // TODO:
     // 1. Create a MinHeap object
     MinHeap heap;
@@ -105,7 +111,7 @@ int buildEncodingTree(int nextFree) {
         //    - Create a new parent node with combined weight
         int parent = nextFree++; // new parent index
         //    - Set left/right pointers
-        charArr[parent] = '/0'; // internal node set
+        charArr[parent] = '\0'; // internal node set
         // children
         leftArr[parent] = small1;
         rightArr[parent] = small2;
@@ -113,15 +119,18 @@ int buildEncodingTree(int nextFree) {
         weightArr[parent] = weightArr[small1] + weightArr[small2];
         //    - Push new parent index back into the heap
         heap.push(parent, weightArr);
-
-        // 4. Return the index of the last remaining node (root)
-        int root = heap.pop (weightArr);
-        return root;
     }
+    // 4. Return the index of the last remaining node (root)
+    int root = heap.pop (weightArr);
+    return root;
 }
 
 // Step 4: Use an STL stack to generate codes
 void generateCodes(int root, string codes[]) {
+    // no tree
+    if (root<0) {
+        return;
+    }
     // TODO:
     // Use stack<pair<int, string>> to simulate DFS traversal.
     stack<pair<int, string>> st;
@@ -144,7 +153,7 @@ void generateCodes(int root, string codes[]) {
         // checks if it is a leaf node, can also change to lchild and rchild, leaf
         if (leftArr[nodeIndex] == -1 &&  rightArr[nodeIndex] == -1) {
             char ch = charArr[nodeIndex];
-            if (ch >= 'z' && ch <= 'z') {
+            if (ch >= 'a' && ch <= 'z') {
                 codes[ch-'a'] = code;
             }
         } else {
