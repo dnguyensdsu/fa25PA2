@@ -1,5 +1,5 @@
 CMakeFiles/fa25PA2.dir/main.cpp.obj: \
- C:\Users\David\CLionProjects\fa25PA2(1)\main.cpp \
+ C:\Users\David\CLionProjects\fa25PA2\main.cpp \
  C:/Program\ Files/JetBrains/CLion\ 2025.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iostream \
  C:/Program\ Files/JetBrains/CLion\ 2025.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/requires_hosted.h \
  C:/Program\ Files/JetBrains/CLion\ 2025.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
@@ -146,4 +146,4 @@ CMakeFiles/fa25PA2.dir/main.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2025.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/deque.tcc \
  C:/Program\ Files/JetBrains/CLion\ 2025.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_stack.h \
  C:/Program\ Files/JetBrains/CLion\ 2025.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uses_allocator.h \
- C:\Users\David\CLionProjects\fa25PA2(1)\heap.h
+ C:\Users\David\CLionProjects\fa25PA2\heap.h
