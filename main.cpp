@@ -89,7 +89,7 @@ int createLeafNodes(int freq[]) {
 
 // Step 3: Build the encoding tree using heap operations
 int buildEncodingTree(int nextFree) {
-    // add base cases
+    // base cases
     if (nextFree == 0) { // nothing in file
         return -1;
     }
@@ -118,7 +118,7 @@ int buildEncodingTree(int nextFree) {
         // children
         leftArr[parent] = small1;
         rightArr[parent] = small2;
-        //combined
+        //combined weight
         weightArr[parent] = weightArr[small1] + weightArr[small2];
         //    - Push new parent index back into the heap
         heap.push(parent, weightArr);
