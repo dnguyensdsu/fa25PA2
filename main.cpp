@@ -93,8 +93,13 @@ int buildEncodingTree(int nextFree) {
     if (nextFree == 0) { // nothing in file
         return -1;
     }
-    if (nextFree == 1) { // only root
-        return 0;
+    if (nextFree == 1) { // same char input
+        leftArr[nextFree] = 0; // 1 child, which is the char
+        rightArr[nextFree] = -1; // has no right child
+        weightArr[nextFree] = weightArr[0];
+
+        // returns index of the new parent as a root
+        return nextFree;
     }
     // TODO:
     // 1. Create a MinHeap object
@@ -111,7 +116,6 @@ int buildEncodingTree(int nextFree) {
         //    - Create a new parent node with combined weight
         int parent = nextFree++; // new parent index
         //    - Set left/right pointers
-        charArr[parent] = '\0'; // internal node set
         // children
         leftArr[parent] = small1;
         rightArr[parent] = small2;
