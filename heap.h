@@ -28,7 +28,7 @@ struct MinHeap {
     int pop(int weightArr[]) {
         // checks if heap is empty
         if (size == 0) {
-            cout << "Heap undeflow.";
+            cout << "Heap underflow.";
             return -1; // -1 error
         }
         // Replace root with last element, then call downheap
@@ -44,7 +44,7 @@ struct MinHeap {
 
     // moves nodes up until the minheap order is correct
     void upheap(int pos, int weightArr[]) {
-        // TODO: swap child upward while smaller than parent
+        // Swaps child upward while smaller than parent
         while (pos > 0) {
             int parent = (pos - 1) / 2; // parents spot in the heap array
             if (weightArr[data[pos]] < weightArr[data[parent]]) { // compare nodes of child and parent with their weights
@@ -59,7 +59,7 @@ struct MinHeap {
     }
 
     void downheap(int pos, int weightArr[]) {
-        // TODO: swap parent downward while larger than any child
+        // Swaps parent downward while larger than any child
         while (true) {
             int left = pos * 2 + 1; // left child index
             int right = pos * 2 + 2; // right child index

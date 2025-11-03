@@ -101,7 +101,6 @@ int buildEncodingTree(int nextFree) {
         // returns index of the new parent as a root
         return nextFree;
     }
-    // TODO:
     // 1. Create a MinHeap object
     MinHeap heap;
     // 2. Push all leaf node indices into the heap.
@@ -135,7 +134,6 @@ void generateCodes(int root, string codes[]) {
     if (root<0) {
         return;
     }
-    // TODO:
     // Use stack<pair<int, string>> to simulate DFS traversal.
     stack<pair<int, string>> st;
 
