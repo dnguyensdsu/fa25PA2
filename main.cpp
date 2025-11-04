@@ -124,8 +124,7 @@ int buildEncodingTree(int nextFree) {
         heap.push(parent, weightArr);
     }
     // 4. Return the index of the last remaining node (root)
-    int root = heap.pop (weightArr);
-    return root;
+    return heap.data[0];
 }
 
 // Step 4: Use an STL stack to generate codes
